@@ -1,0 +1,26 @@
+---Exercício 01: Buscas e Operações Básicas---
+Quem é amigo de Bob? Alice
+MATCH(u1:Usuario)-[:AMIGO]->(u2:Usuario)
+WHERE u2.nome = 'Bob'
+RETURN u1
+
+Quem postou a 'Postagem 2'? Bob
+MATCH(u:Usuario)-[:POSTOU]->(p:Postagem)
+WHERE p.titulo = 'Memórias da Tarde'
+RETURN u
+
+Quem tem mais de 35 anos e fez uma postagem? Charilie
+MATCH(u:Usuario)-[:POSTOU]->(:Postagem)
+WHERE u.idade >= 35
+RETURN u
+-------------------------------------------------------------------------------------------------
+
+---Exercício 02: Funções Neo4j---
+Encontre o usuário mais velho. Eve
+MATCH(u:Usuario) RETURN MAX(u.nome);
+
+Quantos usuários têm mais de 30 anos? 4 usuarios
+MATCH(u:Usuario) WHERE u.idade >= 30 RETURN COLLECT(u.nome);
+
+Qual é a média de idade dos usuários? 35 anos 
+MATCH(u:Usuario) RETURN AVG(u.idade);
